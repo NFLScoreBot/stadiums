@@ -13,6 +13,8 @@ Example stadium record:
 			"long":-80.01583
 		}
 
+You can either download stadiums.json locally, or [you can fetch it over he network](https://raw.github.com/nflscorebot/stadiums/master/stadiums.json "https://raw.github.com/nflscorebot/stadiums/master/stadiums.json").
+
 ### Building the Data File ###
 
 Simple! Just run `node fetchstadiums.js` and you've got a shiny new `stadiums.json` file.
