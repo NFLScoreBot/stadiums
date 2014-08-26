@@ -13,19 +13,21 @@
   http = require("http");
 
   connect = function(host, path, cb) {
-    var conn, req;
-    conn = http.createClient(80, host);
-    req = conn.request("GET", path, {
-      "host": host,
-      "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13"
-    });
-    req.addListener("response", function(response) {
+    var opts, req;
+    opts = {
+      host: host,
+      "User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.A.B.C Safari/525.13",
+      path: path,
+      method: "GET"
+    };
+    req = http.request(opts, function(response) {
       var body;
       body = "";
-      response.addListener("data", function(chunk) {
+      response.setEncoding("utf8");
+      response.on("data", function(chunk) {
         return body += chunk;
       });
-      return response.addListener("end", function() {
+      return response.on("end", function() {
         return cb(body, path);
       });
     });
@@ -36,12 +38,13 @@
 
   connect("en.wikipedia.org", "/wiki/List_of_NFL_stadiums", function(body, path) {
     var done, i, lines, url, _results;
-    lines = body.toString().replace(/\n/g, "").split("</a></div></div></td><td><a href=\"");
+    lines = body.toString().replace(/\n/g, "").split("</a></td><th scope=\"row\"><a href=\"");
     i = 1;
     done = 0;
     _results = [];
     while (i < lines.length) {
       url = lines[i].split("\" title=\"")[0];
+      console.log(url);
       connect("en.wikipedia.org", url, function(body, path) {
         var coords, name;
         name = path.split("/wiki/")[1].replace(/_/g, " ").replace(/%26/g, "&");
@@ -50,6 +53,8 @@
           lat: parseFloat(coords[0]),
           long: parseFloat(coords[1])
         };
+        console.log(name + ":");
+        console.log(stadiums[name]);
         done += 1;
         if (done === lines.length - 1) {
           return fs.writeFileSync("stadiums.json", JSON.stringify(stadiums));
