@@ -39,8 +39,13 @@ connect "en.wikipedia.org", "/wiki/List_of_NFL_stadiums", (body, path) ->
 		console.log url
 
 		connect "en.wikipedia.org", url, (body, path) ->
-			name = path.split("/wiki/")[1].replace(/_/g, " ").replace(/%26/g, "&")
-			coords = body.toString().split("<span class=\"geo\">")[1].split("</span>")[0].split("; ")
+			name = path.split("/wiki/")[1]
+				.replace /_/g, " "
+				.replace /%26/g, "&"
+			coords = body.toString()
+				.split("<span class=\"geo\">")[1]
+				.split("</span>")[0]
+				.split "; "
 
 			stadiums[name] =
 				lat  : parseFloat coords[0]
