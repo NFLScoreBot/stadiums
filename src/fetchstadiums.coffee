@@ -42,6 +42,8 @@ connect "en.wikipedia.org", "/wiki/List_of_NFL_stadiums", (body, path) ->
 			name = path.split("/wiki/")[1]
 				.replace /_/g, " "
 				.replace /%26/g, "&"
+				.replace /%27/g, "'"
+				.replace /\s\([A-z]+\)/g, "" # Replace city names in parenthesis
 			coords = body.toString()
 				.split("<span class=\"geo\">")[1]
 				.split("</span>")[0]

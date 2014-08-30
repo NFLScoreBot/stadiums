@@ -47,7 +47,7 @@
       console.log(url);
       connect("en.wikipedia.org", url, function(body, path) {
         var coords, name;
-        name = path.split("/wiki/")[1].replace(/_/g, " ").replace(/%26/g, "&");
+        name = path.split("/wiki/")[1].replace(/_/g, " ").replace(/%26/g, "&").replace(/%27/g, "'").replace(/\s\([A-z]+\)/g, "");
         coords = body.toString().split("<span class=\"geo\">")[1].split("</span>")[0].split("; ");
         stadiums[name] = {
           lat: parseFloat(coords[0]),
