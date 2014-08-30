@@ -17,7 +17,7 @@ You can either download stadiums.json locally, or [you can fetch it over he netw
 
 ### Building the Data File ###
 
-Simple! Just run `node fetchstadiums.js` and you've got a shiny new `stadiums.json` file.
+Simple! Just run `node bin/fetchstadiums.js` and you've got a shiny new `stadiums.json` file.
 
 ### Legal ###
 
@@ -27,7 +27,7 @@ Simple! Just run `node fetchstadiums.js` and you've got a shiny new `stadiums.js
 
 	Copyright (c) 2012, David Pearson
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
