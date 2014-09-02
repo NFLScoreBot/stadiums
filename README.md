@@ -13,7 +13,7 @@ Example stadium record:
 			"long":-80.01583
 		}
 
-You can either download stadiums.json locally, or [you can fetch it over he network](https://raw.github.com/nflscorebot/stadiums/master/stadiums.json "https://raw.github.com/nflscorebot/stadiums/master/stadiums.json").
+You can either download stadiums.json locally, or [you can fetch it over the network](https://raw.github.com/nflscorebot/stadiums/master/stadiums.json "https://raw.github.com/nflscorebot/stadiums/master/stadiums.json").
 
 ### Building the Data File ###
 
@@ -23,7 +23,7 @@ Simple! Just run `node bin/fetchstadiums.js` and you've got a shiny new `stadium
 
 `stadiums.json` is hereby released into the public domain. Where this is not possible, `stadiums.json` may be used and distributed completely freely, with no legal requirements whatsoever.
 
-`fetchstadiums.coffee` and `fetchstadiums.js`, part of @NFLScoreBot, is provided to you under the following license:
+`fetchstadiums.coffee` and `fetchstadiums.js`, part of @NFLScoreBot, are provided to you under the following license:
 
 	Copyright (c) 2012-2014, David Pearson
 	All rights reserved.
